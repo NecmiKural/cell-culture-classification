@@ -1,0 +1,46 @@
+{
+  "kfold_convnext": {
+    "fold_accuracies": [
+      71.99,
+      75.4,
+      70.82,
+      74.76,
+      72.2
+    ],
+    "mean_accuracy": 73.04,
+    "std": 1.75,
+    "oof_accuracy": 73.04
+  },
+  "custom_senet": {
+    "val_accuracy": 52.06
+  },
+  "svm": {
+    "val_accuracy": 59.01
+  },
+  "ensemble": {
+    "val_accuracy": 83.55,
+    "weights": {
+      "custom": 0.0,
+      "convnext_5fold": 0.7,
+      "svm": 0.30000000000000004
+    }
+  },
+  "test": {
+    "total": 512,
+    "distribution": {
+      "a": 180,
+      "l": 63,
+      "c": 63,
+      "i": 25,
+      "g": 73,
+      "n": 3,
+      "o": 21,
+      "d": 21,
+      "m": 47,
+      "e": 10,
+      "f": 4,
+      "p": 1,
+      "q": 1
+    }
+  }
+}
