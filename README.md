@@ -6,18 +6,18 @@ Fine-grained, heavily imbalanced multi-class image classification of microscope 
 
 ## Problem
 
-- 16 active classes (a–i, k–q), real-world "messy" microscopy data.
+- 16 active classes (a to i and k to q), real-world "messy" microscopy data.
 - Severe class imbalance: 320:1 between the largest class (1,283 images) and the smallest (4 images).
-- High inter-class similarity between visually near-identical cell morphologies — the main source of error.
+- High inter-class similarity between visually near-identical cell morphologies, which are the main source of error.
 - 4,695 labelled training images, 512 unlabelled test images at 1024×1024.
 
 ## Approach
 
 Three modelling families were compared, each with two architectures, as required by the brief:
 
-1. **Trained from scratch** — a custom SE-ResNet CNN and a Vision Transformer (ViT-Small).
-2. **Fine-tuning pretrained networks** — EfficientNet-B0 (v1) and ConvNeXt-Tiny (v2/v3).
-3. **Embeddings + classical ML** — features from ResNet-50 / ConvNeXt-Base fed to SVM, XGBoost, and Random Forest.
+1. **Trained from scratch:** a custom SE-ResNet CNN and a Vision Transformer (ViT-Small).
+2. **Fine-tuning pretrained networks:** EfficientNet-B0 (v1) and ConvNeXt-Tiny (v2/v3).
+3. **Embeddings + classical ML:** features from ResNet-50 / ConvNeXt-Base fed to SVM, XGBoost, and Random Forest.
 
 Final predictions come from a weighted soft-voting **ensemble** of the strongest architectures.
 
@@ -34,13 +34,12 @@ Final predictions come from a weighted soft-voting **ensemble** of the strongest
 | v2 | Leakage fixes, ConvNeXt-Tiny, better validation split | 76.60% |
 | v3 | 5-fold cross-validation ensemble of ConvNeXt-Tiny | **83.55%** |
 
-Each version's failures explicitly informed the next — the methodology section of the report walks through the three V1 flaws that were corrected.
+Each version's failures explicitly informed the next. The methodology section of the report walks through the three V1 flaws that were corrected.
 
 ## Repository layout
 
 ```
 REPORT.md / REPORT.pdf        Full technical report (dataset analysis, methodology, results)
-CODE_EXPLANATION_NOTES.md     Walkthrough of the implementation
 preprocess.py                 Preprocessing pipeline
 notebooks/                    Training notebooks (outputs cleared)
   01_custom_cnn_efficientnet_v1.ipynb
